@@ -1,0 +1,12 @@
+# Install pnpm if pnpm-lock.yaml is found
+if [ -f "pnpm-lock.yaml" ]; then
+  echo "📦 pnpm-lock.yaml detected, installing pnpm and dependencies"
+  curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
+  pnpm install
+else
+  echo "📦 No pnpm-lock.yaml found, using default npm install"
+  npm install
+fi
+
+# Build the project
+npm run build
